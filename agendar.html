@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agendar | Black Barber</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">Black Barber</h1>
+      <nav class="nav">
+        <a href="index.html#servicos">Serviços</a>
+        <a href="index.html#planos">Planos</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index.html#contato">Contato</a>
+      </nav>
+      <a class="btn" href="index.html">Voltar</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="agendamento">
+      <div class="container">
+        <p class="eyebrow">Agendamento</p>
+        <h2>Reserve seu horário</h2>
+        <p class="lead">Escolha o serviço, data e horário. Responderemos com a confirmação.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-2">
+          <div class="card">
+            <h4>Formulário rápido</h4>
+            <form class="form" action="#" method="post">
+              <label>
+                Nome
+                <input type="text" name="nome" placeholder="Seu nome" required />
+              </label>
+              <label>
+                WhatsApp
+                <input type="tel" name="whatsapp" placeholder="(11) 99999-0000" required />
+              </label>
+              <label>
+                Serviço
+                <select name="servico" required>
+                  <option value="">Selecione</option>
+                  <option value="corte">Corte</option>
+                  <option value="barba">Barba</option>
+                  <option value="combo">Corte + Barba</option>
+                </select>
+              </label>
+              <label>
+                Data
+                <input type="date" name="data" required />
+              </label>
+              <label>
+                Horário
+                <input type="time" name="hora" required />
+              </label>
+              <button class="btn" type="submit">Solicitar agendamento</button>
+            </form>
+          </div>
+          <div class="card">
+            <h4>Atendimento</h4>
+            <p>Responda ao formulário ou fale direto no WhatsApp.</p>
+            <p>Seg–Sáb: 09h às 20h</p>
+            <a class="btn btn-ghost" href="mailto:contato@barbearia.com">Enviar e-mail</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Black Barber. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
