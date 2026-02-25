@@ -1,0 +1,72 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Painel Admin | Black Barber</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">Black Barber Admin</h1>
+      <a class="btn" href="index.html">Voltar ao site</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Login admin</h3>
+            <form id="admin-login-form" class="form" autocomplete="off">
+              <label>
+                Usuário
+                <input type="text" name="username" required />
+              </label>
+              <label>
+                Senha
+                <input type="password" name="password" required />
+              </label>
+              <button class="btn" type="submit">Entrar</button>
+            </form>
+            <p id="admin-feedback" class="admin-feedback"></p>
+          </div>
+
+          <div class="card">
+            <h3>Painel</h3>
+            <div class="actions">
+              <button id="load-appointments" class="btn btn-ghost" type="button">Atualizar lista</button>
+              <button id="logout-admin" class="btn btn-ghost" type="button">Sair</button>
+            </div>
+            <p id="admin-auth-state" class="admin-feedback"></p>
+          </div>
+        </div>
+
+        <div class="card admin-table-card">
+          <h3>Agendamentos</h3>
+          <div class="table-wrap">
+            <table class="admin-table" id="appointments-table">
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Telefone</th>
+                  <th>Serviço</th>
+                  <th>Data</th>
+                  <th>Hora</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

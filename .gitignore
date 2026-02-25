@@ -1,0 +1,5 @@
+api-php/.env
+*.log
+Thumbs.db
+.DS_Store
+assets/img/Cliente Payment Gateway Flow*
