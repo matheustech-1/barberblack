@@ -19,6 +19,18 @@ function formatCents(value) {
   return (Number(value || 0) / 100).toFixed(2).replace(".", ",");
 }
 
+function friendlyFetchError(error, fallbackMessage) {
+  const rawMessage = String(error?.message || "");
+  const isFetchFailure =
+    error instanceof TypeError || /Failed to fetch/i.test(rawMessage);
+
+  if (isFetchFailure) {
+    return "Nao foi possivel conectar com a API. Verifique URL e /api/health.";
+  }
+
+  return rawMessage || fallbackMessage;
+}
+
 async function createPixCheckout(appointmentId) {
   const response = await fetch(`${API_BASE}/payments/checkout`, {
     method: "POST",
@@ -71,7 +83,10 @@ function setupBookingForm() {
         serviceSelect.appendChild(option);
       }
     } catch (error) {
-      feedback.textContent = error.message || "Erro ao carregar servicos. Tente novamente.";
+      feedback.textContent = friendlyFetchError(
+        error,
+        "Erro ao carregar servicos. Tente novamente."
+      );
       feedback.style.color = "#ffb4b4";
     }
   }
@@ -130,7 +145,10 @@ function setupBookingForm() {
       feedback.style.color = "#9af0a7";
       form.reset();
     } catch (error) {
-      feedback.textContent = error.message || "Erro ao enviar agendamento.";
+      feedback.textContent = friendlyFetchError(
+        error,
+        "Erro ao enviar agendamento."
+      );
       feedback.style.color = "#ffb4b4";
     } finally {
       submitButton.disabled = false;

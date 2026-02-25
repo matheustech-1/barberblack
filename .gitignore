@@ -1,4 +1,4 @@
-api-php/.env
+backend/.env
 *.log
 Thumbs.db
 .DS_Store

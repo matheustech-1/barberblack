@@ -25,6 +25,18 @@ async function parseJsonSafe(response) {
   }
 }
 
+function friendlyFetchError(error, fallbackMessage) {
+  const rawMessage = String(error?.message || "");
+  const isFetchFailure =
+    error instanceof TypeError || /Failed to fetch/i.test(rawMessage);
+
+  if (isFetchFailure) {
+    return "Nao foi possivel conectar com a API. Verifique URL e /api/health.";
+  }
+
+  return rawMessage || fallbackMessage;
+}
+
 function getToken() {
   return localStorage.getItem(TOKEN_KEY);
 }
@@ -116,7 +128,10 @@ async function updateAppointmentStatus(appointmentId, status, buttonElement) {
     feedback.style.color = "#9af0a7";
     await loadAppointments();
   } catch (error) {
-    feedback.textContent = error.message || "Erro ao atualizar status.";
+    feedback.textContent = friendlyFetchError(
+      error,
+      "Erro ao atualizar status."
+    );
     feedback.style.color = "#ffb4b4";
     buttonElement.disabled = false;
     buttonElement.textContent = originalText;
@@ -155,7 +170,10 @@ async function loadAppointments() {
     feedback.textContent = "Agendamentos carregados.";
     feedback.style.color = "#9af0a7";
   } catch (error) {
-    feedback.textContent = error.message || "Erro ao carregar agendamentos.";
+    feedback.textContent = friendlyFetchError(
+      error,
+      "Erro ao carregar agendamentos."
+    );
     feedback.style.color = "#ffb4b4";
   }
 }
@@ -192,7 +210,10 @@ loginForm?.addEventListener("submit", async (event) => {
     loginForm.reset();
     loadAppointments();
   } catch (error) {
-    feedback.textContent = error.message || "Erro no login.";
+    feedback.textContent = friendlyFetchError(
+      error,
+      "Erro no login."
+    );
     feedback.style.color = "#ffb4b4";
   }
 });
